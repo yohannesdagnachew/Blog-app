@@ -1,0 +1,15 @@
+<h1>Here is a list of posts for a given user.</h1>
+<div class="posts">
+  <%= render partial: 'shared/user' ,locals:{user_data: @user_data}%>
+<%@posts.each do |post|%>
+ <div class="post-with_comment">
+ <div class= "post-item">
+  <%= render partial: 'shared/post' ,locals:{post_data: post}%>
+  </div>
+  <div class="post-comment"><%= render partial: 'shared/comment' ,locals:{comments_data: post.most_recent_comments}%></div>
+ </div>
+<%end%>
+<div class="pagination-conatiner">
+<button class='pagination'>pagination</button>
+</div>
+</div>

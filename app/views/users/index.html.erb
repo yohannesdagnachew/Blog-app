@@ -1,0 +1,6 @@
+<h1 class="list-title">List of Users.</h1>
+<div class="user-list">
+ <% @users.each do |user| %>
+  <%= render partial: 'shared/user' ,locals:{user_data: user}%>
+<%end%>  
+</div>

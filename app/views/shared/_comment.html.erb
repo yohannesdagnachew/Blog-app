@@ -1,0 +1,7 @@
+  <ul class='comments-container'>
+    <%comments_data.each do |comment|%>
+      <li class='comments-container--list'>
+        <p><span class='commenter'><%=User.find(comment.author_id).name%></span> : <%=comment.text%></p>
+      </li>
+    <%end%>
+  </ul>
