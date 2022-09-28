@@ -1,7 +1,0 @@
-<h1>Here is a post for a given user and id of the post.</h1>
-<div class="detail">
-<div class="detail-post"><%= render partial: 'shared/post_details' ,locals:{post_data: @posts}%>
-</div>
-<div class="detail-comment"><%= render partial: 'shared/comment' ,locals:{comments_data: @posts.most_recent_comments}%>
-</div>
-</div>
