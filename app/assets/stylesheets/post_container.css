@@ -1,0 +1,61 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-item {
+  border: 1px solid black;
+  padding-left: 0.9375rem;
+}
+
+.post-comment {
+  border: 1px solid black;
+  padding-left: 0.9375rem;
+}
+
+.post-with_comment {
+  width: 56%;
+  align-self: center;
+}
+
+.post-container--counter {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5px;
+}
+
+.comments-container {
+  list-style: none;
+}
+
+.pagination-conatiner {
+  display: flex;
+  justify-content: center
+}
+
+.pagination {
+  width: 100px;  
+}
+
+.detail {
+   display: flex;
+   flex-direction: column;
+   width: 50%;
+}
+
+.detail-post {
+  border: 1px solid black;
+  padding-left: .9375rem;
+}
+
+.detail-comment {
+    border: 1px solid black;  
+}
+
+.post-details--counters {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
