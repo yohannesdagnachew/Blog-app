@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     if new_comment.save
       new_comment.update_comments_counter
       flash[:success] = 'Success: Comment created successfully'
-      redirect_to user_post_path(user_id: current_user.id, id: post.id)
+      redirect_to user_posts_path(user_id: current_user.id, id: post.id)
     else
       flash.now[:error] = 'Error: Comment creation failed'
       render :show, locals: { post: post }
