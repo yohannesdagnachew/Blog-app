@@ -1,0 +1,12 @@
+<div class='comment-form'>
+<h2 class='comment-form__heading'>Add Comment</h2>
+
+<%= form_with model: comment,url: create_comment_path ,method: :post,local: true, scope: :comment,class: 'comment-form__input' do |f|%>
+
+<div class='comment-form__text'>
+  <%= f.text_area :text ,placeholder: 'Put your comment here',rows: '4',cols: '30' ,class: 'comment-text-area'%>
+</div>
+
+<%= f.submit "Add Comment" ,class: 'comment-form__btn'%>
+<%end%>
+</div>

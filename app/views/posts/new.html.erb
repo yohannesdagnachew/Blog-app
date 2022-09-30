@@ -1,0 +1,16 @@
+<div class='form-box'>
+<h1 class='form-box__heading'>New Post</h1>
+
+<%= form_with model: post ,url: {action: 'create'} ,method: :post,local: true, scope: :post,class: 'form-box__form' do |f|%>
+  <div class='form-box__title'>
+  <%= f.text_field :title,placeholder: 'Title' ,class: 'text-title'%>
+</div>
+
+<div class='form-box__text'>
+  <%= f.text_area :text ,placeholder: 'Your post',class: 'text-area',cols: '30',rows: '5'%>
+</div>
+
+<%= f.submit "Create Post" ,class: 'form-box__submit' %>
+<%end%>
+
+</div>
