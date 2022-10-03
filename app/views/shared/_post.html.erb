@@ -6,8 +6,10 @@
   </p>
 
   <div class='post-container--buttons'>
-  <%= button_to 'Add Comment', new_comment_path(user_id:current_user_id,id:post_data.id),method: 'get' ,class: 'comment-btn'%>
-  <%= button_to 'Like', like_path(user_id:current_user_id,id:post_data.id),method: 'put' ,class: 'like-btn'%>
+  <%= button_to 'Add Comment', '/users/1/posts/1/comments',method: 'get' ,class: 'comment-btn' %>
+  <%= button_to 'Like', '/users/1/posts/1' ,method: 'put' ,class: 'like-btn'%>
+  <%# new_comment_path(user_id:current_user_id,id:post_data.id) %>
+  <%# like_path(user_id:current_user_id,id:post_data.id) %>
   </div>
   <%= flash[:success]%>
 </div>
