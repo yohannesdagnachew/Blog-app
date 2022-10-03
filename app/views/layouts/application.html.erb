@@ -11,6 +11,10 @@
   </head>
 
   <body>
+     <div class='main-header'>
+      <h1 class='main-header__logo'><%=link_to 'Blog App',users_path ,class: 'logo-link'%></h1>
+      <%= button_to  'Add Post', new_user_post_path ,class: 'main-header__add-post',method: 'get'%>
+    </div>
     <%= yield %>
   </body>
 </html>
