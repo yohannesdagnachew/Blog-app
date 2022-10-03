@@ -1,15 +1,8 @@
 <div class='post-container'>
-  <h5 class='post-container--heading'>Post #<%=post_data.id%></h5>
+  <h5 class='post-container--heading'><%= link_to 'Post #', user_post_path(current_user_id, post_data.id) %><%=post_data.id%></h5>
   <p class='post-container--text'><%=post_data.text%></p>
   <p class='post-container--counter'>
     Comments: <%=post_data.comment_counter%>, Likes: <%=post_data.like_counter%>
   </p>
-
-  <div class='post-container--buttons'>
-  <%= button_to 'Add Comment', '/users/1/posts/1/comments',method: 'get' ,class: 'comment-btn' %>
-  <%= button_to 'Like', '/users/1/posts/1' ,method: 'put' ,class: 'like-btn'%>
-  <%# new_comment_path(user_id:current_user_id,id:post_data.id) %>
-  <%# like_path(user_id:current_user_id,id:post_data.id) %>
-  </div>
   <%= flash[:success]%>
 </div>

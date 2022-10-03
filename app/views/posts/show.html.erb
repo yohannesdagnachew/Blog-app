@@ -1,6 +1,10 @@
 <h1>Here is a post for a given user and id of the post.</h1>
 <div class="detail">
 <div class="detail-post"><%= render partial: 'shared/post_details' ,locals:{post_data: @posts}%>
+ <div class='post-container--buttons'>
+  <%= button_to 'Add Comment', new_comment_path(user_id:@current_user_id,id:@posts.id),method: 'get' ,class: 'comment-btn' %>
+  <%= button_to 'Like', like_path(user_id:@current_user_id,id:@posts.id) ,method: 'get' ,class: 'like-btn'%>
+  </div>
 </div>
 <div class="detail-comment"><%= render partial: 'shared/comment' ,locals:{comments_data: @posts.most_recent_comments}%>
 </div>

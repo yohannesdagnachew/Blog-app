@@ -1,7 +1,7 @@
   <div class='user-container'>
   <img class='user-container__img' src=<%= user_data.photo%>alt='User image' height='150' width='150'>
   <div class='user-container__detail'>
-    <h2 class='user-container--name'><%= user_data.name%></h2>
+    <h2 class='user-container--name'><%= link_to user_data.name, user_path(user_data.id)%></h2>
     <p class='user-container--post-counter'>Number of Posts: <%=user_data.post_counter%></p>
   </div>
 </div>
