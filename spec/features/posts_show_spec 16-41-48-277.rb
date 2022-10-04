@@ -32,30 +32,37 @@ RSpec.describe 'Post index page', type: :system do
       end
 
       it 'displays a post\'s Title' do
+        sleep(3)
         expect(page).to have_content('Post 1')
       end
 
       it 'displays a post\'s author' do
+        sleep(3)
         expect(page).to have_content('John')
       end
 
       it 'displays a post\'s body' do
+        sleep(3)
         expect(page).to have_content('This is the first post.')
       end
 
       it 'displays how many comments the post has' do
+        sleep(3)
         expect(page).to have_content('Comments: 3')
       end
 
       it 'displays how many likes the post has' do
+        sleep(3)
         expect(page).to have_content('Likes: 0')
       end
 
       it 'displays the user name of each comment' do
+        sleep(3)
         expect(page).to have_content('John')
       end
 
       it 'displays the comment text' do
+        sleep(3)
         expect(page).to have_content('This is the first comment.')
       end
     end

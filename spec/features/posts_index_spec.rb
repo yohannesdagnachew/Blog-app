@@ -30,17 +30,21 @@ RSpec.describe 'Post index page', type: :system do
         visit user_posts_path(id)
       end
       it 'displays a list of users' do
+        sleep(3)
         expect(page).to have_content('John')
       end
       it 'Displays a profile image for each user' do
+        sleep(3)
         expect(page).to have_css("img[src*='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80']")
       end
 
       it 'Displays the number of posts each user has written' do
+        sleep(3)
         expect(page).to have_content('Number of Posts: 4')
       end
 
       it 'displays a user\'s all posts' do
+        sleep(3)
         expect(page).to have_content('Post 1')
         expect(page).to have_content('Post 2')
         expect(page).to have_content('Post 3')
@@ -48,10 +52,12 @@ RSpec.describe 'Post index page', type: :system do
       end
 
       it 'displays a post\'s Title' do
+        sleep(3)
         expect(page).to have_content('Post 3')
       end
 
       it 'displays a post\'s body' do
+        sleep(3)
         expect(page).to have_content('This is the third post.')
       end
 
@@ -59,26 +65,32 @@ RSpec.describe 'Post index page', type: :system do
         click_link('Post 1')
         user = User.find_by(name: 'John')
         id = user.id
+        sleep(3)
         expect(page.current_path).to eq user_post_path(id, @post3.id - 2)
       end
 
       it 'displays how many comments the post has' do
+        sleep(3)
         expect(page).to have_content('Comments: 3')
       end
 
       it 'displays a see all posts button' do
+        sleep(3)
         expect(page).to have_button('pagination')
       end
 
       it 'displays how many likes the post has' do
+        sleep(3)
         expect(page).to have_content('Likes: 0')
       end
 
       it 'displays the user name of each comment' do
+        sleep(3)
         expect(page).to have_content('John')
       end
 
       it 'displays the comment text' do
+        sleep(3)
         expect(page).to have_content('This is the first comment.')
       end
     end
