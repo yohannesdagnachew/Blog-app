@@ -22,4 +22,20 @@ RSpec.describe 'Post index page', type: :system do
       @comment_2.save
       @comment_3.save
     end
+    
+     feature 'User index page' do
+      background { 
+        id = User.find_by(name: 'John').id
+        visit user_posts_path(id)}
+      it 'displays a list of users' do
+        expect(page).to have_content('John')
+      end
+      it 'Displays a profile image for each user' do
+        expect(page).to have_css("img[src*='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80']")
+      end
+
+      it 'Displays the number of posts each user has written' do
+        expect(page).to have_content('Number of Posts: 4')
+      end
+     end
   end
