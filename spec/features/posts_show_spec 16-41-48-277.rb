@@ -24,7 +24,7 @@ RSpec.describe 'Post index page', type: :system do
       @comment3.save
     end
 
-    feature 'User index page' do
+    feature 'User index page' do # rubocop:todo Metrics/BlockLength
       background do
         user = User.find_by(name: 'John')
         id = user.id
