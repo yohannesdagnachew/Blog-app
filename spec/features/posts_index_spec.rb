@@ -63,5 +63,21 @@ RSpec.describe 'Post index page', type: :system do
       it 'displays how many comments the post has' do
         expect(page).to have_content('Comments: 3')
       end
+       
+       it'displays a see all posts button' do
+        expect(page).to have_button('pagination')
+      end
+  
+      it 'displays how many likes the post has' do
+        expect(page).to have_content('Likes: 0')
+      end
+
+      it 'displays the user name of each comment' do
+        expect(page).to have_content('John')
+      end
+
+      it 'displays the comment text' do
+        expect(page).to have_content('This is the first comment.')
+      end
      end
   end
