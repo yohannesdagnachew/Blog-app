@@ -37,5 +37,31 @@ RSpec.describe 'Post index page', type: :system do
       it 'Displays the number of posts each user has written' do
         expect(page).to have_content('Number of Posts: 4')
       end
+       
+         it 'displays a user\'s all posts' do
+        expect(page).to have_content('Post 1')
+        expect(page).to have_content('Post 2')
+        expect(page).to have_content('Post 3')
+        expect(page).to have_content('Post 4')
+      end
+
+      it'displays a post\'s Title' do
+        expect(page).to have_content('Post 3')
+      end
+
+      it'displays a post\'s body' do
+        expect(page).to have_content('This is the third post.')
+      end
+    
+      it 'When a post is clicked it will redirect to post show page' do
+        click_link('Post 3')
+        user = User.find_by(name: 'John')
+        id = user.id
+        expect(page.current_path).to eq user_post_path(id, @post_3.id)
+      end
+
+      it 'displays how many comments the post has' do
+        expect(page).to have_content('Comments: 3')
+      end
      end
   end
