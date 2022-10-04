@@ -1,7 +1,7 @@
-require 'rails_helper'
+require 'rails_helper' # rubocop:todo Naming/FileName
 
 RSpec.describe 'Post index page', type: :system do
-  describe 'GET /posts/index' do
+  describe 'GET /postss/index' do
     before(:each) do
       @user1 = User.create(name: 'John',
                            photo: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
@@ -24,50 +24,27 @@ RSpec.describe 'Post index page', type: :system do
       @comment3.save
     end
 
-    feature 'User index page' do # rubocop:todo Metrics/BlockLength
+    feature 'User index page' do
       background do
-        id = User.find_by(name: 'John').id
-        visit user_posts_path(id)
-      end
-      it 'displays a list of users' do
-        expect(page).to have_content('John')
-      end
-      it 'Displays a profile image for each user' do
-        expect(page).to have_css("img[src*='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80']")
-      end
-
-      it 'Displays the number of posts each user has written' do
-        expect(page).to have_content('Number of Posts: 4')
-      end
-
-      it 'displays a user\'s all posts' do
-        expect(page).to have_content('Post 1')
-        expect(page).to have_content('Post 2')
-        expect(page).to have_content('Post 3')
-        expect(page).to have_content('Post 4')
+        user = User.find_by(name: 'John')
+        id = user.id
+        visit user_post_path(id, @post_1.id)
       end
 
       it 'displays a post\'s Title' do
-        expect(page).to have_content('Post 3')
+        expect(page).to have_content('Post 1')
+      end
+
+      it 'displays a post\'s author' do
+        expect(page).to have_content('John')
       end
 
       it 'displays a post\'s body' do
-        expect(page).to have_content('This is the third post.')
-      end
-
-      it 'When a post is clicked it will redirect to post show page' do
-        click_link('Post 1')
-        user = User.find_by(name: 'John')
-        id = user.id
-        expect(page.current_path).to eq user_post_path(id, @post3.id - 2)
+        expect(page).to have_content('This is the first post.')
       end
 
       it 'displays how many comments the post has' do
         expect(page).to have_content('Comments: 3')
-      end
-
-      it 'displays a see all posts button' do
-        expect(page).to have_button('pagination')
       end
 
       it 'displays how many likes the post has' do
