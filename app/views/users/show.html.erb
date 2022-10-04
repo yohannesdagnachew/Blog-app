@@ -9,10 +9,10 @@
 <div class="post-list">
     <% @user.most_recent_posts.each do |post| %>
         <div class="post-list-item">
-        <%= render partial: 'shared/post' ,locals:{post_data: post}%>
+        <%= render partial: 'shared/post' ,locals:{post_data: post, current_user_id: @current_user_id} %>
        </div>
     <%end%>
 </div>
-<div class="btn-posts-container"><button class='btn-posts'>See all posts</button></div>
+<div class="btn-posts-container"><button class='btn-posts'><%= link_to 'See all posts', user_posts_path(@user) %></button></div>
 
 </div>

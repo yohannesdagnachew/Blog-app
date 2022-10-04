@@ -10,9 +10,4 @@ RSpec.describe Post, type: :model do
   it 'it should create a like' do
     expect(@like).to be_valid
   end
-
-  it 'at first like_counter should be 1' do
-    @like.update_likes_counter(@post)
-    expect(@post.like_counter).to eq(1)
-  end
 end
