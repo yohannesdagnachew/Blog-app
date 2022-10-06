@@ -4,7 +4,7 @@
 <%@posts.each do |post|%>
  <div class="post-with_comment">
  <div class= "post-item">
-  <%= render partial: 'shared/post' ,locals:{post_data: post, current_user_id: @current_user_id}%>
+  <%= render partial: 'shared/post' ,locals:{post_data: post, current_user_id:  @visiter}%>
    <div class='post-container--buttons'>
   <%= button_to 'Add Comment', new_comment_path(user_id:@current_user_id,id:post.id),method: 'get' ,class: 'comment-btn' %>
   <%= button_to 'Like', like_path(user_id:@current_user_id,id:post.id) ,method: 'get' ,class: 'like-btn'%>

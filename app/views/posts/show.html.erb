@@ -2,7 +2,7 @@
 <div class="detail">
 <div class="detail-post"><%= render partial: 'shared/post_details' ,locals:{post_data: @posts}%>
  <div class='post-container--buttons'>
-  <%= button_to 'Add Comment', new_comment_path(user_id:@current_user_id,id:@posts.id),method: 'get' ,class: 'comment-btn' %>
+  <%= button_to 'Add Comment', new_comment_path(user_id:@visiter,id:@posts.id),method: 'get' ,class: 'comment-btn' %>
   <%= button_to 'Like', like_path(user_id:@current_user_id,id:@posts.id) ,method: 'get' ,class: 'like-btn'%>
   </div>
 </div>

@@ -8,7 +8,7 @@ class CommentController < ApplicationController
 
   def create_comment
     comment_text = params.require(:comment).permit(:text)[:text]
-    post = Post.where(author_id: current_user.id).where(id: params[:id])[0]
+    post = Post.where(author_id:  params[:id]).where(id: params[:id])[0]
     user = User.find(current_user.id)
     new_comment = Comment.new(post:, author: user, text: comment_text)
 
@@ -17,7 +17,7 @@ class CommentController < ApplicationController
     if new_comment.save
       new_comment.update_comments_counter
       flash[:success] = 'Success: Comment created successfully'
-      redirect_to user_post_path(user_id: current_user.id, id: post.id)
+      redirect_to user_post_path(user_id: params[:id], id: post.id)
     else
       flash.now[:error] = 'Error: Comment creation failed'
       render :show, locals: { post: }

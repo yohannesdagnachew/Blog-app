@@ -3,12 +3,13 @@ class PostsController < ApplicationController
     @user_data = User.find(params[:user_id])
     @posts = @user_data.posts.all
     @current_user_id = current_user.id
+    @visiter = params[:user_id]
   end
 
   def show
     @posts = Post.where(author_id: params[:user_id]).where(id: params[:id])[0]
     @current_user_id = current_user.id
-    puts @posts
+    @visiter = params[:user_id]
   end
 
   def new
