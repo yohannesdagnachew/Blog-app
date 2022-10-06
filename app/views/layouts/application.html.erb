@@ -11,10 +11,24 @@
   </head>
 
   <body>
-     <div class='main-header'>
-      <h1 class='main-header__logo'><%=link_to 'Blog App',users_path ,class: 'logo-link'%></h1>
-      <%= button_to  'Add Post', '/users/1/posts/new' ,class: 'main-header__add-post',method: 'get'%>
+           <div class='navbar'>
+      <h1 class='navbar__logo'><%=link_to 'Blog App',users_path ,class: 'logo-link'%></h1>
+      <ul class='navbar__links'>
+        <li><%=link_to 'Home',users_path ,class: 'navbar__link'%></li>
+
+        <% if user_signed_in? %>
+          <li><%= link_to  'Add Post', new_user_post_path(user_id:current_user.id) ,class: 'navbar__link',method: :get%></li>
+          <li><%= link_to "Log Out",destroy_user_session_path,data: { turbo_method: :delete } ,class: 'navbar__link'%></li>      
+        <%else%>
+          <li><%= link_to 'Log In' ,new_user_session_path,class: 'navbar__link'%></li>
+          <li><%= link_to 'Sign Up' ,new_user_registration_path,class: 'navbar__link'%></li>
+        <%end%>
+      </ul>
+
     </div>
+    <%= render 'shared/flashes' %>
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

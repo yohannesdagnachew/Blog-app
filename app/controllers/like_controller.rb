@@ -13,6 +13,6 @@ class LikeController < ApplicationController
       like.destroy
     end
 
-    redirect_to user_post_path(user_id: current_user.id)
+    redirect_to user_posts_path(user_id: current_user.id)
   end
 end
