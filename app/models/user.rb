@@ -10,6 +10,12 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :post_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  enum role: [:default, :admin]
+  after_initialize :set_default_role, :if => :new_record?
+  def set_default_role
+    self.role ||= :admin
+  end
+
   def most_recent_posts
     posts.order(created_at: :desc).limit(3)
   end
