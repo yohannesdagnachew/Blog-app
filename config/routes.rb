@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[index show] do
-    resources :posts, only: %i[index new create show] do
-    end  
+    resources :posts, only: %i[index new create show] do # rubocop:todo Lint/EmptyBlock
+    end
   end
 
   root to: 'main#index'
@@ -10,4 +10,3 @@ Rails.application.routes.draw do
   post '/users/:user_id/posts/:id/comments/new_comment', to: 'comment#create_comment', as: :create_comment
   get '/users/:user_id/posts/:id/like', to: 'like#like', as: :like
 end
-

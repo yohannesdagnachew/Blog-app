@@ -8,7 +8,7 @@ class CommentController < ApplicationController
 
   def create_comment
     comment_text = params.require(:comment).permit(:text)[:text]
-    post = Post.where(author_id:  params[:user_id]).where(id: params[:id])[0]
+    post = Post.where(author_id: params[:user_id]).where(id: params[:id])[0]
     user = User.find(current_user.id)
     new_comment = Comment.new(post:, author: user, text: comment_text)
 
