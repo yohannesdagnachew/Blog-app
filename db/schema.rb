@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_005_181_356) do # rubocop:todo Metrics/BlockLength
+ActiveRecord::Schema[7.0].define(version: 20_221_007_074_359) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_005_181_356) do # rubocop:todo 
     t.integer 'failed_attempts', default: 0, null: false
     t.string 'unlock_token'
     t.datetime 'locked_at'
+    t.string 'role', default: 'default'
     t.index ['confirmation_token'], name: 'index_users_on_confirmation_token', unique: true
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true

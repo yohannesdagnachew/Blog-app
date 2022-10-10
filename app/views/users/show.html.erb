@@ -9,7 +9,7 @@
 <div class="post-list">
     <% @user.most_recent_posts.each do |post| %>
         <div class="post-list-item">
-        <%= render partial: 'shared/post' ,locals:{post_data: post, current_user_id: @current_user_id} %>
+        <%= render partial: 'shared/post' ,locals:{post_data: post, current_user_id: @visiter} %>
        </div>
     <%end%>
 </div>

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[index show] do
-    resources :posts, only: %i[index new create show]
+    namespace 'api' do
+      resources :posts
+    end
+    resources :posts, only: %i[index new create show] do
+      namespace 'api' do
+        resources :comments
+      end
+    end
   end
 
   root to: 'main#index'
